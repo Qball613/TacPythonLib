@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lora-mesh-tak"
+version = "0.1.0"
+description = "Python API for LoRa Mesh TAK firmware devices"
+readme = "README.md"
+license = {text = "GPL-3.0"}
+authors = [
+    {name = "LoRa Mesh TAK Team"}
+]
+keywords = ["lora", "mesh", "tak", "gps", "aodv", "serial", "protobuf"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Communications",
+    "Topic :: System :: Networking",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pyserial>=3.5",
+    "protobuf>=4.21.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "mypy",
+    "ruff",
+]
+
+[project.urls]
+Homepage = "https://github.com/qballq/LoRa-Mesh-GPS-Team-Awareness-Kit-TAK"
+Repository = "https://github.com/qballq/LoRa-Mesh-GPS-Team-Awareness-Kit-TAK"
+Issues = "https://github.com/qballq/LoRa-Mesh-GPS-Team-Awareness-Kit-TAK/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lora_mesh_tak*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=lora_mesh_tak"
